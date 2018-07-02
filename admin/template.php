@@ -1,13 +1,13 @@
-<?php var_dump($_REQUEST);
+<?php // var_dump($_REQUEST);
 if ($_REQUEST[repeat_time]) {
     $repeat_time = $_REQUEST[repeat_time];
     update_option( 'cs_repeat_time', $repeat_time );
-    echo '<br>' . $repeat_time . '<br>';
+    //echo '<br>' . $repeat_time . '<br>';
 }
 if ($_REQUEST[cs_init_post_id]) {
     $cs_init_post_id = $_REQUEST[cs_init_post_id];
     update_option( 'cs_init_post_id', $cs_init_post_id );
-    echo '<br>' . $cs_init_post_id . '<br>';
+    //echo '<br>' . $cs_init_post_id . '<br>';
 }
 if (($_REQUEST[repeat_time] == '1') || ($_REQUEST[repeat_time] == '7')) {
 	date_default_timezone_set('Europe/Kiev');
@@ -15,7 +15,7 @@ if (($_REQUEST[repeat_time] == '1') || ($_REQUEST[repeat_time] == '7')) {
 	$hours = date("H");
 	$minutes = date ("i");
 	$seconds = date("s");
-	$cs_init_date = $cs_init_date - $hours * 60 * 60 - $minutes * 60 - $seconds - 86400*7;
+	$cs_init_date = $cs_init_date - $hours * 60 * 60 - $minutes * 60 - $seconds;
 	update_option( 'cs_init_date', $cs_init_date );
 }
 

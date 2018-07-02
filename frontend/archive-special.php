@@ -55,7 +55,7 @@ if ( 'yes' == blade_grve_post_meta( 'grve_disable_content' ) ) {
 
 
 						if (($repeat_time == '-1') || ($cs_init_post_id == '-1') || ($cs_init_date == '-1')) {
-							echo '<h2>No data to show</h2>';
+							echo '<h2 class="text-center">No data to show</h2>';
 						} else {
 							date_default_timezone_set('Europe/Kiev');
 							$cs_current_date=time();
@@ -67,8 +67,19 @@ if ( 'yes' == blade_grve_post_meta( 'grve_disable_content' ) ) {
 								$steps = floor($delta / (86400 * 7));
 							}
 							$cs_current_post = ($post_number_in_query + $steps) % $counter;
-								//echo $steps;
 
+//                            echo $delta / (86400 * 7);
+//                            echo "<br>";
+//                                echo(date("Y-m-d",$cs_init_date));
+//
+//                            echo "<br>";
+//
+//                            echo $post_number_in_query;
+//                            echo "<br>";
+//
+//                            echo $steps;
+//								echo "<br>";
+//                                echo $cs_current_post;
 //							echo 'init date ' . $cs_init_date . '<br>';
 //							$cs_current_date=time();
 //							echo 'current date ' . $cs_current_date . '<br>';
@@ -94,28 +105,32 @@ if ( 'yes' == blade_grve_post_meta( 'grve_disable_content' ) ) {
 
 					?>
 					<?php
-					$specials_list = new WP_Query(array('post_type' => 'special', 'posts_per_page' => 1, 'order' => 'ASC','offset' => $cs_current_post ));
-					if ( $specials_list->have_posts() ) :
-					while ( $specials_list->have_posts()) : $specials_list->the_post();
-					$id = get_post_thumbnail_id();
-					$post_id = get_the_ID();
-					//echo the_content();
-					//echo date('Y-m-d H:i:s', $cs_current_date) . ' current date <br>';
-					//echo date('Y-m-d H:i:s', $cs_init_date) . 'init date <br>';
-					//echo $steps . '<br>';
-                    ?>
-                        <!-- PAGE CONTENT -->
-                        <div id="page-<?php the_ID(); ?>" <?php post_class(); ?>>
-							<?php
-							require_once('content.php');
-							?>
-                        </div>
-                        <!-- END PAGE CONTENT -->
-                    <?php
+                        if (($repeat_time == '-1') || ($cs_init_post_id == '-1') || ($cs_init_date == '-1')) {
+                            ;
+                        } else {
+                            $specials_list = new WP_Query(array('post_type' => 'special', 'posts_per_page' => 1, 'order' => 'ASC', 'offset' => $cs_current_post));
+                            if ($specials_list->have_posts()) :
+                                while ($specials_list->have_posts()) : $specials_list->the_post();
+                                    $id = get_post_thumbnail_id();
+                                    $post_id = get_the_ID();
+                                    //echo the_content();
+                                    //echo date('Y-m-d H:i:s', $cs_current_date) . ' current date <br>';
+                                    //echo date('Y-m-d H:i:s', $cs_init_date) . 'init date <br>';
+                                    //echo $steps . '<br>';
+                                    ?>
+                                    <!-- PAGE CONTENT -->
+                                    <div id="page-<?php the_ID(); ?>" <?php post_class(); ?>>
+                                        <?php
+                                        require_once('content.php');
+                                        ?>
+                                    </div>
+                                    <!-- END PAGE CONTENT -->
+                                    <?php
 
-					endwhile;
-					endif;
-					wp_reset_query();
+                                endwhile;
+                            endif;
+                            wp_reset_query();
+                        }
 					?>
 
 

@@ -2,7 +2,8 @@
 <!--	<div class="row">-->
 		<div class="container">
 			<div class="row main-slider-section">
-                <div class="col-12">
+                <div class="header-box">
+                    <div class="col-12">
 					<?php if (get_field('header_h3')) :?>
 						<h3><?php echo get_field('header_h3');?></h3>
 					<?php endif;?>
@@ -21,6 +22,7 @@
 					<?php if (get_field('header_h5_description')) :?>
 						<div class="h5-description"><?php echo get_field('header_h5_description'); ?></div>
 					<?php endif;?>
+                    </div>
                 </div>
 
 					<?php $main_slider_counter = 1;
@@ -130,9 +132,9 @@
                 <?php
                 $cs_thumb_id = get_post_thumbnail_id();
                 if($cs_thumb_id) {
-                    $image_box_class= "col-sm-4";
+                    $image_box_class= "col-md-4";
                 } else {
-	                $image_box_class= "col-sm-12";
+	                $image_box_class= "col-md-12";
                 }
                 $cs_post_id = get_the_ID();
                 ?>
@@ -156,7 +158,7 @@
 
                         </div>
                             <?php if ($cs_thumb_id) :?>
-                                <div class="image-thumb col-sm-8">
+                                <div class="image-thumb col-md-8">
                                 <img src="<?php echo the_post_thumbnail_url('full'); ?>" alt="">
                                 </div>
                             <?php endif;?>
@@ -227,10 +229,10 @@
                     <div class="container">
                         <div class="row">
 	                        <?php if (get_field('cta_slogan')) :?>
-                                <div class="col-sm-10 cta-slogan"><?php echo get_field('cta_slogan');?></div>
+                                <div class="col-md-10 cta-slogan"><?php echo get_field('cta_slogan');?></div>
 	                        <?php endif;?>
 	                        <?php if (get_field('cta_tel_number')) :?>
-                                <div class="col-sm-2 cta-tel-number">
+                                <div class="col-md-2 cta-tel-number">
                                     <a href="tel:<?php echo get_field('cta_tel_number');?>"><?php echo get_field('cta_tel_number');?></a>
 
                                 </div>

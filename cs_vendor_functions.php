@@ -132,7 +132,7 @@ function cs_blade_grve_print_header_title( $mode = 'page', $cs_header_title = 'a
 	}
 }
 
-//define( 'ACF_LITE', true );
+define( 'ACF_LITE', true );
 
 // 1. customize ACF path
 add_filter('acf/settings/path', 'cs_acf_settings_path');
