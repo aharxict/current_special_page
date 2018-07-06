@@ -57,7 +57,8 @@ if ( 'yes' == blade_grve_post_meta( 'grve_disable_content' ) ) {
 						if (($repeat_time == '-1') || ($cs_init_post_id == '-1') || ($cs_init_date == '-1')) {
 							echo '<h2 class="text-center">No data to show</h2>';
 						} else {
-							date_default_timezone_set('Europe/Kiev');
+//							date_default_timezone_set('Europe/Kiev');
+//							date_default_timezone_set('America/New_York');
 							$cs_current_date=time();
 							$delta = $cs_current_date - $cs_init_date;
 							if ( $repeat_time == '1' ) {
@@ -66,12 +67,16 @@ if ( 'yes' == blade_grve_post_meta( 'grve_disable_content' ) ) {
 							if ( $repeat_time == '7' ) {
 								$steps = floor($delta / (86400 * 7));
 							}
+                            if ( $repeat_time == '14' ) {
+                                $steps = floor($delta / (86400 * 7 * 2));
+                            }
 							$cs_current_post = ($post_number_in_query + $steps) % $counter;
 
 //                            echo $delta / (86400 * 7);
 //                            echo "<br>";
-//                                echo(date("Y-m-d",$cs_init_date));
-//
+//                            echo(date("Y-m-d H:i:s",$cs_init_date));
+//                            echo "<br>";
+//                            echo(date("Y-m-d H:i:s",$cs_init_date + ($steps * 86400)));
 //                            echo "<br>";
 //
 //                            echo $post_number_in_query;

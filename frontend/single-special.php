@@ -1,3 +1,12 @@
+<?php if( current_user_can('editor') || current_user_can('administrator') ) {
+
+} else {
+    wp_redirect(home_url());
+
+}
+?>
+
+
 <?php get_header(); ?>
 
 <?php the_post(); ?>
