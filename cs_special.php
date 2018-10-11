@@ -53,7 +53,9 @@ class Special
             'supports'            => array('title','thumbnail'), // 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'
             'taxonomies'          => array('section'),
             'has_archive'         => true,
-            'rewrite'             => true,
+            'rewrite' => array(
+                'slug'       => 'sale'
+            ),
             'query_var'           => true,
         ) );
     }
